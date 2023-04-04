@@ -116,7 +116,7 @@ def get_readable_message():
         globals()['PAGE_NO'] -= 1
     for download in list(download_dict.values())[STATUS_START:STATUS_LIMIT+STATUS_START]:
         msg += f"<b>_____《🐱 Pik4Bot 🐱》_____</b>\n\n"
-        msg += f"<b>{download.status()}</b>: <code>{escape(f'{download.name()}')}</code>"
+        msg += f"<b>☞ {download.status()}</b>: <code>{escape(f'{download.name()}')}</code>"
         if download.status() not in [MirrorStatus.STATUS_SPLITTING, MirrorStatus.STATUS_SEEDING]:
             msg += f"\n<b>☞</b> {get_progress_bar_string(download.progress())} {download.progress()}"
             msg += f"\n<b>☞ Processed</b>: {download.processed_bytes()} of {download.size()}"
