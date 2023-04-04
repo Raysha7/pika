@@ -41,11 +41,11 @@ async def stats(client, message):
     memory = virtual_memory()
     net_io = net_io_counters()
     if await aiopath.exists('.git'):
-        last_commit = await cmd_exec("git log -1 --date=short --pretty=format:'%cd <b>From</b> %cr'", True)
+        last_commit = await cmd_exec("git log -1 --date=short --pretty=format:'%cd \n<b>From</b>: %cr'", True)
         last_commit = last_commit[0]
     else:
         last_commit = 'No UPSTREAM_REPO'
-    stats = f'<b>  《🐱 PIKABOT STATS 🐱》</b>\n  ┅┅┅┅┅┅┅┅┅┅┅┅┅\n\n'\
+    stats = f'<b>  《🐱 PIKABOT STATS 🐱》</b>\n  ┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅\n'\
             f'<b>╭ Commit Date</b>: {last_commit}\n'\
             f'<b>├ Bot Uptime</b>: {get_readable_time(time() - botStartTime)}\n'\
             f'<b>├ OS Uptime</b>: {get_readable_time(time() - boot_time())}\n'\
