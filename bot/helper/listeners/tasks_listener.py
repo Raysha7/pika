@@ -393,9 +393,9 @@ class MirrorLeechListener:
                 return
         else:
             if SHORTENERES:
-                msg = f'<b>_____《🐱 Pik4Bot 🐱》_____</b>\n\n<b>Name</b>: <code>.{escape(name).replace(" ", "-").replace(".", ",")}</code>\n<b>Size</b>: {get_readable_file_size(size)}'
+                msg = f'<b>_____《🐱 Pik4Bot 🐱》_____</b>\n\n<b>☞ Name</b>: <code>.{escape(name).replace(" ", "-").replace(".", ",")}</code>\n<b>☞ Size</b>: {get_readable_file_size(size)}'
             else:
-                msg = f'<b>_____《🐱 Pik4Bot 🐱》_____</b>\n\n<b>Name</b>: <code>{escape(name)}</code>\n<b>Size</b>: {get_readable_file_size(size)}'
+                msg = f'<b>_____《🐱 Pik4Bot 🐱》_____</b>\n\n<b>☞ Name</b>: <code>{escape(name)}</code>\n<b>☞ Size</b>: {get_readable_file_size(size)}'
             msg += f'\n<b>☞ Type: </b>{typ}'
             if typ == "Folder":
                 msg += f'\n<b>☞ SubFolders: </b>{folders}'
