@@ -83,5 +83,5 @@ class TelegraphHelper:
             LOGGER.error(f'Failed Revoking telegraph access token due to : {e}')
 
 
-telegraph = TelegraphHelper('Jmdkh-mltb', 'https://github.com/junedkh/jmdkh-mltb')
+telegraph = TelegraphHelper('Pika Mirror Bot', 'http://t.me/Pikamirror_bot')
 bot_loop.run_until_complete(telegraph.create_account())
