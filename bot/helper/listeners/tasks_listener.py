@@ -402,7 +402,7 @@ class MirrorLeechListener:
                 msg += f'\n<b>☞ Files: </b>{files}'
             #msg += f"\n<b>Upload</b>: {self.extra_details['mode']}"
             msg += f'\n<b>☞ Elapsed</b>: {get_readable_time(time() - self.extra_details["startTime"])}'
-            msg += f'\n\n<b>☞ Mirror_By</b>: {self.tag}'            
+            msg += f'\n\n<b>☞ Task_By</b>: {self.tag}'            
             if link or rclonePath and config_dict['RCLONE_SERVE_URL']:
                 if drive_id and config_dict['GDRIVE_ID'] != drive_id:
                     msg += f"\n\n<b>☞ Folder id</b>: <code>{drive_id}</code>"
