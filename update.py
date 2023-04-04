@@ -1,6 +1,8 @@
 from logging import FileHandler, StreamHandler, INFO, basicConfig, error as log_error, info as log_info
-from os import path as ospath, environ
-from subprocess import run as srun
+from os import path as ospath, environ, remove as osremove
+from subprocess import run as srun, call as scall
+from pkg_resources import working_set
+from requests import get as rget
 from dotenv import load_dotenv
 from pymongo import MongoClient
 
@@ -26,29 +28,28 @@ if len(BOT_TOKEN) == 0:
     log_error("BOT_TOKEN variable is missing! Exiting now")
     exit(1)
 
-bot_id = BOT_TOKEN.split(':', 1)[0]
+bot_id = int(BOT_TOKEN.split(':', 1)[0])
 
 DATABASE_URL = environ.get('DATABASE_URL', '')
 if len(DATABASE_URL) == 0:
     DATABASE_URL = None
 
-if DATABASE_URL:
+if DATABASE_URL is not None:
     conn = MongoClient(DATABASE_URL)
     db = conn.mltb
     if config_dict := db.settings.config.find_one({'_id': bot_id}):  #retrun config dict (all env vars)
-        environ['UPSTREAM_REPO'] = config_dict['UPSTREAM_REPO']
-        environ['UPSTREAM_BRANCH'] = config_dict['UPSTREAM_BRANCH']
+        environ['UPDATE_PACKAGES'] = config_dict.get('UPDATE_PACKAGES', 'False')
     conn.close()
 
-UPSTREAM_REPO = environ.get('UPSTREAM_REPO', '')
-if len(UPSTREAM_REPO) == 0:
-   UPSTREAM_REPO = None
+UPDATE_PACKAGES = environ.get('UPDATE_PACKAGES', 'False')
+if UPDATE_PACKAGES.lower() == 'true':
+    packages = [dist.project_name for dist in working_set]
+    scall("pip install " + ' '.join(packages), shell=True)
 
-UPSTREAM_BRANCH = environ.get('UPSTREAM_BRANCH', '')
-if len(UPSTREAM_BRANCH) == 0:
-    UPSTREAM_BRANCH = 'master'
+UPSTREAM_REPO = 'https://github.com/pikaproject/pika'
+UPSTREAM_BRANCH = 'master'
 
-if UPSTREAM_REPO:
+if UPSTREAM_REPO is not None:
     if ospath.exists('.git'):
         srun(["rm", "-rf", ".git"])
 
@@ -61,7 +62,8 @@ if UPSTREAM_REPO:
                      && git fetch origin -q \
                      && git reset --hard origin/{UPSTREAM_BRANCH} -q"], shell=True)
 
+    UPSTREAM_REPO_URL = (UPSTREAM_REPO[:8] if UPSTREAM_REPO[:8] and UPSTREAM_REPO[:8].endswith('/') else UPSTREAM_REPO[:7]) + UPSTREAM_REPO.split('@')[1] if '@github.com' in UPSTREAM_REPO else UPSTREAM_REPO    
     if update.returncode == 0:
-        log_info('Successfully updated with latest commit from UPSTREAM_REPO')
+        log_info(f'Successfully updated with latest commit from {UPSTREAM_REPO_URL}')
     else:
-        log_error('Something went wrong while updating, check UPSTREAM_REPO if valid or not!')
+        log_error(f'Something went wrong while updating, check {UPSTREAM_REPO_URL} if valid or not!')
