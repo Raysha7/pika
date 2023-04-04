@@ -491,8 +491,8 @@ class MirrorLeechListener:
             count = len(download_dict)
             if self.uid in self.sameDir:
                 self.sameDir.remove(self.uid)
-        msg = f"☞ {self.tag} your download has been stopped due to: {escape(error)}\n<b>Elapsed</b>: {get_readable_time(time() - self.extra_details['startTime'])}"
-        msg += f"\n<b>☞ Upload</b>: {self.extra_details['mode']}"
+        msg = f"<b>☞</b> {self.tag} {escape(error)}\n\n<b>☞ Elapsed</b>: {get_readable_time(time() - self.extra_details['startTime'])}"
+        msg += f"\n☞ <b>Upload</b>: {self.extra_details['mode']}"
         await sendMessage(self.message, msg, button)
         if self.logMessage:
             await sendMessage(self.logMessage, msg, button)
@@ -533,7 +533,7 @@ class MirrorLeechListener:
             count = len(download_dict)
             if self.uid in self.sameDir:
                 self.sameDir.remove(self.uid)
-        msg = f"☞ {self.tag} {escape(error)}\n<b>Elapsed</b>: {get_readable_time(time() - self.extra_details['startTime'])}"
+        msg = f"<b>☞</b> {self.tag} {escape(error)}\n\n<b>☞ Elapsed</b>: {get_readable_time(time() - self.extra_details['startTime'])}"
         msg += f"\n☞ <b>Upload</b>: {self.extra_details['mode']}"
         await sendMessage(self.message, msg)
         if self.logMessage:
