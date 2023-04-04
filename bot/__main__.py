@@ -45,22 +45,24 @@ async def stats(client, message):
         last_commit = last_commit[0]
     else:
         last_commit = 'No UPSTREAM_REPO'
-    stats = f'<b>Commit Date</b>: {last_commit}\n\n'\
-            f'<b>Bot Uptime</b>: {get_readable_time(time() - botStartTime)}\n'\
-            f'<b>OS Uptime</b>: {get_readable_time(time() - boot_time())}\n\n'\
-            f'<b>Total Disk Space </b>: {get_readable_file_size(total)}\n'\
-            f'<b>Used</b>: {get_readable_file_size(used)} | <b>Free</b>: {get_readable_file_size(free)}\n\n'\
-            f'<b>Upload</b>: {get_readable_file_size(net_io.bytes_sent)}\n'\
-            f'<b>Download</b>: {get_readable_file_size(net_io.bytes_recv)}\n\n'\
-            f'<b>CPU</b>: {cpu_percent(interval=0.5)}%\n'\
-            f'<b>RAM</b>: {memory.percent}%\n'\
-            f'<b>DISK</b>: {disk}%\n\n'\
-            f'<b>Physical Cores</b>: {cpu_count(logical=False)}\n'\
-            f'<b>Total Cores</b>: {cpu_count(logical=True)}\n\n'\
-            f'<b>SWAP</b>: {get_readable_file_size(swap.total)} | <b>Used</b>: {swap.percent}%\n'\
-            f'<b>Memory Total</b>: {get_readable_file_size(memory.total)}\n'\
-            f'<b>Memory Free</b>: {get_readable_file_size(memory.available)}\n'\
-            f'<b>Memory Used</b>: {get_readable_file_size(memory.used)}\n'
+    stats = f'<b>  《🐱 PIKABOT STATS 🐱》</b>\n  ┅┅┅┅┅┅┅┅┅┅┅┅┅\n\n'\
+            f'<b>╭ Commit Date</b>: {last_commit}\n'\
+            f'<b>├ Bot Uptime</b>: {get_readable_time(time() - botStartTime)}\n'\
+            f'<b>├ OS Uptime</b>: {get_readable_time(time() - boot_time())}\n'\
+            f'<b>├ Total Disk Space </b>: {get_readable_file_size(total)}\n'\
+            f'<b>├ Used</b>: {get_readable_file_size(used)} | <b>Free</b>: {get_readable_file_size(free)}\n'\
+            f'<b>├ Upload</b>: {get_readable_file_size(net_io.bytes_sent)}\n'\
+            f'<b>├ Download</b>: {get_readable_file_size(net_io.bytes_recv)}\n'\
+            f'<b>├ CPU</b>: {cpu_percent(interval=0.5)}%\n'\
+            f'<b>├ RAM</b>: {memory.percent}%\n'\
+            f'<b>├ DISK</b>: {disk}%\n'\
+            f'<b>├ Physical Cores</b>: {cpu_count(logical=False)}\n'\
+            f'<b>├ Total Cores</b>: {cpu_count(logical=True)}\n'\
+            f'<b>├ SWAP</b>: {get_readable_file_size(swap.total)} | <b>Used</b>: {swap.percent}%\n'\
+            f'<b>├ Memory Total</b>: {get_readable_file_size(memory.total)}\n'\
+            f'<b>├ Memory Free</b>: {get_readable_file_size(memory.available)}\n'\
+            f'<b>├ Memory Used</b>: {get_readable_file_size(memory.used)}\n'
+            f'<b>╰ Owner :</b> <a href="https://t.me/XRofikX">𝑷𝒊𝒌𝒂𝒄𝒉𝒖 🐹</a>\n'
     await sendMessage(message, stats)
 
 async def start(client, message):
@@ -68,9 +70,9 @@ async def start(client, message):
         start_string = 'Bot Started.\n' \
                     'Now I will send your files or links here.\n'
     else:
-        start_string = '🌹 Welcome To One Of A Modified Anasty Mirror Bot\n' \
+        start_string = 'Hi, Pik4bot is here 🐱\n' \
                     'This bot can Mirror all your links To Google Drive!\n' \
-                    '👨🏽‍💻 Powered By: @JMDKH_Team'
+                    'Join <b><a href="https://t.me/+y-9_Jyz2OJc0MmVl">This Group</a></b> to start use this bot'
     await sendMessage(message, start_string)
 
 async def restart(client, message):
