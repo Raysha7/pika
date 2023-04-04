@@ -62,7 +62,7 @@ async def stats(client, message):
             f'<b>├ Memory Total</b>: {get_readable_file_size(memory.total)}\n'\
             f'<b>├ Memory Free</b>: {get_readable_file_size(memory.available)}\n'\
             f'<b>├ Memory Used</b>: {get_readable_file_size(memory.used)}\n'
-            f'<b>╰ Owner :</b> <a href="https://t.me/XRofikX">𝑷𝒊𝒌𝒂𝒄𝒉𝒖 🐹</a>\n'
+            f'<b>╰ Owner :</b> <a href='https://t.me/XRofikX'>𝑷𝒊𝒌𝒂𝒄𝒉𝒖 🐹</a>\n'
     await sendMessage(message, stats)
 
 async def start(client, message):
@@ -72,7 +72,7 @@ async def start(client, message):
     else:
         start_string = 'Hi, Pik4bot is here 🐱\n' \
                     'This bot can Mirror all your links To Google Drive!\n' \
-                    'Join <b><a href="https://t.me/+y-9_Jyz2OJc0MmVl">This Group</a></b> to start use this bot'
+                    'Join <b><a href='https://t.me/+y-9_Jyz2OJc0MmVl'>This Group</a></b> to start use this bot'
     await sendMessage(message, start_string)
 
 async def restart(client, message):
