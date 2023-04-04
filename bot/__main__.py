@@ -41,7 +41,7 @@ async def stats(client, message):
     memory = virtual_memory()
     net_io = net_io_counters()
     if await aiopath.exists('.git'):
-        last_commit = await cmd_exec("git log -1 --date=short --pretty=format:'%cd \n<b>From</b> %cr'", True)
+        last_commit = await cmd_exec("git log -1 --date=short --pretty=format:'%cd \n<b>├ From</b>: %cr'", True)
         last_commit = last_commit[0]
     else:
         last_commit = 'No UPSTREAM_REPO'
