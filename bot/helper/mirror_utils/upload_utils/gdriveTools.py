@@ -589,18 +589,18 @@ class GoogleDriveHelper:
                         msg += f"📄 <code>{file.get('name')}<br>({get_readable_file_size(int(file.get('size', 0)))})</code><br>"
                     if not config_dict['DISABLE_DRIVE_LINK']:
                         furl = short_url(f"https://drive.google.com/uc?id={file.get('id')}&export=download")
-                        msg += f"<b><a href={furl}>Drive Link</a></b>"
+                        msg += f"<b><a href={furl}>☁️ Drive Link</a></b>"
                     if index_url:
                         if isRecur:
                             url_path = "/".join(rquote(n, safe='') for n in self.__get_recursive_list(file, dir_id))
                         else:
                             url_path = rquote(f'{file.get("name")}')
                         url = short_url(f'{index_url}/{url_path}')
-                        msg += f' <b>| 🚀 <a href={url}>Index Link</a></b>'
+                        msg += f' <b>| ⚡ <a href={url}>Index Link</a></b>'
                         if config_dict['VIEW_LINK']:
                             urlv = f'{index_url}/{url_path}?a=view'
                             urlv = short_url(urlv)
-                            msg += f' <b>| 💻 <a href={urlv}>View Link</a></b>'
+                            msg += f' <b>| 🌐 <a href={urlv}>View Link</a></b>'
                 msg += '<br><br>'
                 contents_count += 1
                 if len(msg.encode('utf-8')) > 39000:
@@ -615,7 +615,7 @@ class GoogleDriveHelper:
         if not telegraph_content:
             return "", None
 
-        path = [async_to_sync(telegraph.create_page, title='Jmdkh-mltb Drive Search',
+        path = [async_to_sync(telegraph.create_page, title='Pik4bot Drive Search',
                 content=content)["path"] for content in telegraph_content]
         if len(path) > 1:
             async_to_sync(telegraph.edit_telegraph, path, telegraph_content)
