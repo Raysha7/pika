@@ -32,6 +32,7 @@ from .modules import (anonymous, authorize, bot_settings, cancel_mirror,
                       leech_del, mirror_leech, rmdb, rss, save_message, shell,
                       status, torrent_search, torrent_select, users_settings,
                       ytdlp)
+from .limz import bypas_link
 
 start_aria2_listener()
 
