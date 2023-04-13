@@ -1,4 +1,4 @@
-FROM 5hojib/jmdkh:latest
+FROM pikachuproject/dockerjmdkh:new
 
 WORKDIR /usr/src/app
 RUN chmod 777 /usr/src/app
